@@ -29,10 +29,10 @@
                         <li><a href="{{route('student-shift.index')}}">Student Shift</a></li>
                         <li><a href="{{route('student-fee-category.index')}}">Fee Category</a></li>
                         <li><a href="{{route('student-fee-amount.index')}}">Fee Amount</a></li>
-                        <li><a href="invoice-report.html">Exam Type</a></li>
-                        <li><a href="invoice-report.html">Subject</a></li>
-                        <li><a href="invoice-report.html">Assign Subject</a></li>
-                        <li><a href="invoice-report.html">Designation</a></li>
+                        <li><a href="{{route('student-exam-type.index')}}">Exam Type</a></li>
+                        <li><a href="{{route('student-subject.index')}}">Subject</a></li>
+                        <li><a href="{{route('assign-subject.index')}}">Assign Subject</a></li>
+                        <li><a href="{{route('designation.index')}}">Designation</a></li>
                     </ul>
                 </li>
 
@@ -40,6 +40,15 @@
                     <a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="invoice-report.html">Invoice Reports</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#"><i class="fe fe-document"></i> <span> Admin User</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="{{route('user.index')}}">User</a></li>
+                        <li><a href="{{route('role.index')}}">Role</a></li>
+                        <li><a href="{{route('permission.index')}}">Permission</a></li>
                     </ul>
                 </li>
             </ul>

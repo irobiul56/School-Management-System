@@ -4,10 +4,11 @@
     <!-- Logo -->
     <div class="header-left">
         <a href="index.html" class="logo">
-            <img src="{{asset('admin/assets/img/logo.png')}}" alt="Logo">
+            {{-- <img src="{{asset('admin/assets/img/logo.png')}}" alt="Logo"> --}}
+            <a href="#"><h3>JKMEHAI</h3></a>
         </a>
         <a href="index.html" class="logo logo-small">
-            <img src="{{asset('admin/assets/img/logo-small.png')}}" alt="Logo" width="30" height="30">
+            {{-- <img src="{{asset('admin/assets/img/logo-small.png')}}" alt="Logo" width="30" height="30"> --}}
         </a>
     </div>
     <!-- /Logo -->
