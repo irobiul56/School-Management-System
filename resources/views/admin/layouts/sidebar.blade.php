@@ -7,7 +7,7 @@
                     <span>Main</span>
                 </li>
                 <li> 
-                    <a href="index.html"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+                    <a href="{{route('admin.dashboard')}}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
                 </li>
                 
                 <li class="submenu">
@@ -35,11 +35,29 @@
                         <li><a href="{{route('designation.index')}}">Designation</a></li>
                     </ul>
                 </li>
+                <li class="submenu">
+                    <a href="#"><i class="fe fe-document"></i> <span> Student Management</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="#">Registration</a></li>
+                        <li><a href="#">Student Promotion</a></li>
+                        <li><a href="#">Roll Generate</a></li>
+                        <li><a href="{{route('registration-fee-show')}}">Registration Fee</a></li>
+                        <li><a href="#">Student Monthly Fee</a></li>
+                        <li><a href="#">Student Exam Fee</a></li>
+                    </ul>
+                </li>
 
                 <li class="submenu">
                     <a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="invoice-report.html">Invoice Reports</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#"><i class="fe fe-document"></i> <span> Employee</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="{{route('employee.index')}}">Employee List</a></li>
                     </ul>
                 </li>
 

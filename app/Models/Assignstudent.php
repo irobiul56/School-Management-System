@@ -2,20 +2,18 @@
 
 namespace App\Models;
 
-use App\Models\Feecategory;
-use App\Models\Studentclass;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Feeamount extends Model
+class Assignstudent extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function feecategory()
+    public function studentinfo()
     {
-        return $this->belongsTo(Feecategory::class, 'fee_category_id', 'id');
+        return $this->BelongsTo(Student::class, 'student_id', 'id');
     }
 
     public function studentclass()
@@ -23,4 +21,5 @@ class Feeamount extends Model
         return $this->BelongsTo(Studentclass::class, 'class_id', 'id');
     }
 
+    
 }

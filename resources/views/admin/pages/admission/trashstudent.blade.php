@@ -11,7 +11,7 @@
                     </div>
                     <div>
                         <a href="{{route('show.student.form')}}" class="btn btn-sm btn-info"> Admission Form <i class="fa fa-arrow-right"></i></a>
-                        <a href="{{route('trash-student-show')}}" class="btn btn-sm btn-danger"> Trash Student <i class="fa fa-arrow-right"></i></a>
+                        <a href="{{route('admission.index')}}" class="btn btn-sm btn-success"> All Student <i class="fa fa-arrow-right"></i></a>
                     </div>
                 </div>
                 @include('validate-main')
@@ -61,18 +61,13 @@
                                             {{-- Trash --}}
                                             
                                             @if ($form_type == 'create')
-                                            <a class="btn btn-sm btn-danger" href="{{route('student-trash', $item -> id)}}"><i class="fa fa-trash"></i></a>
-                                                {{-- <form action="{{route('admission.trash', $item -> id)}}" method="POST" class="d-inline">
+                                            <a class="btn btn-sm btn-success" href="{{route('student-trash', $item -> id)}}">Restore</a>
+                                                <form action="{{route('admission.destroy', $item -> id)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn btn-sm btn-danger" href="#"><i class="fa fa-trash"></i></button>
-                                                </form> --}}
+                                                    <button class="btn btn-sm btn-danger" href="#">Delete Permanently</button>
+                                                </form>
                                             @endif
-                                            
-                                            {{-- <a class="btn btn-sm btn-info" href="#"><i class="fa fa-eye"></i></a> --}}
-                                            <a class="btn btn-sm btn-success" target="_blank" href="{{route('admission-admit', $item -> id)}}">Download Admit</a>
-                                            {{-- Trash --}}
-                                            
 
                                         </td>
                                     </tr>

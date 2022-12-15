@@ -40,12 +40,13 @@
 								<p class="account-subtitle">Access to our dashboard</p>
 								
 								<!-- Form -->
-								<form action="#">
+								<form action="{{route('user.login')}}" method="POST" enctype="multipart/form-data">
+									@csrf
 									<div class="form-group">
-										<input class="form-control" type="text" placeholder="Email">
+										<input name="email" class="form-control" type="text" placeholder="Email">
 									</div>
 									<div class="form-group">
-										<input class="form-control" type="text" placeholder="Password">
+										<input name="password" class="form-control" type="text" placeholder="Password">
 									</div>
 									<div class="form-group">
 										<button class="btn btn-primary btn-block" type="submit">Login</button>

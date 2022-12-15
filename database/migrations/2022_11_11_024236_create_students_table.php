@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('student_id') -> nullable();
+            $table->bigInteger('admin_id');
             $table->text('photo');
             $table->string('birthnumber');
             $table->string('gender');
@@ -26,6 +28,9 @@ return new class extends Migration
             $table->string('fatherphone');
             $table->string('motherphone');
             $table->string('admitedclass');
+            $table->bigInteger('admit_group') -> nullable();
+            $table->bigInteger('shift');
+            $table->bigInteger('year');
             $table->string('presentaddress');
             $table->string('permanentaddress');
             $table->string('gurdianname');

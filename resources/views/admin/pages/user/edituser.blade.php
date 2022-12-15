@@ -1,36 +1,36 @@
 @extends('admin.layouts.app')
 @section('main-section')
-
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h1 class="card-title text-center">Addmission Form</h1>
+                <h1 class="card-title text-center"> Employee Edit Form</h1>
             </div>
             <div class="card-body">
-                <h4 class="card-title">Student Information Information</h4> 
+                <h4 class="card-title">Employee Information</h4> 
                 @include('validate')
                 <hr style="border-top: 5px solid green">
-                <form action="{{route('admission.store')}}" method="POST" enctype="multipart/form-data">                
+                <form action="{{route('user.update', $user -> id)}}" method="POST" enctype="multipart/form-data">                
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-xl-6">
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label">Student Name <span style="font-size: 20px" class="text-danger"> * </span></label>
                                 <div class="col-lg-9">
-                                    <input name="name" type="text" class="form-control">
+                                    <input name="name" value="{{$user -> name}}" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label">Father's Name <span style="font-size: 20px" class="text-danger"> * </span></label>
                                 <div class="col-lg-9">
-                                    <input name ="fathername" type="text" class="form-control">
+                                    <input name ="fname" value="{{$user-> fname}}" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label">Mother's Name <span style="font-size: 20px" class="text-danger"> * </span></label>
                                 <div class="col-lg-9">
-                                    <input name="mothername" type="text" class="form-control">
+                                    <input name="mname" value="{{$user-> mname}}" type="text" class="form-control">
                                 </div>
                             </div>
                             {{-- <div class="form-group row">
@@ -53,107 +53,73 @@
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label">Date Of Birth <span style="font-size: 20px" class="text-danger"> * </span></label>
                                 <div class="col-lg-9">
-                                    <input name="dob" type="date" class="form-control">
+                                    <input name="dob" type="date" value="{{$user ->dob}}" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Past School</label>
+                                <label class="col-lg-3 col-form-label">Phone Number</label>
                                 <div class="col-lg-9">
-                                    <input name="pastschool" type="text" class="form-control">
+                                    <input name="phone" value="{{$user -> phone}}" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Admission Class <span style="font-size: 20px" class="text-danger"> * </span> </label>
+                                <label class="col-lg-3 col-form-label">Email Number</label>
+                                <div class="col-lg-9">
+                                    <input name="email" value="{{$user -> email}}" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label"> Role <span style="font-size: 20px" class="text-danger"> * </span> </label>
                                 <div class="col-lg-9">
                                     <select name="class" id="" class="form-control">
-                                        <option value="">-- Select Class ---</option>
-                                        @foreach ($class as $item)
-                                        <option value="{{$item -> id}}">{{$item -> name}}</option>
+                                        <option value="">-- Select Role ---</option>
+                                        @foreach ($role as $item)
+                                        <option {{ ($item-> id) == $user -> role ? 'selected' : '' }} value="{{$item -> id}}">{{$item -> name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label"> Group</label>
-                                <div class="col-lg-9">
-                                    <select name="group" id="" class="form-control">
-                                        <option value="">-- Select Class ---</option>
-                                        @foreach ($group as $item)
-                                        <option value="{{$item -> id}}">{{$item -> name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Father's Phone <span style="font-size: 20px" class="text-danger"> * </span></label>
-                                <div class="col-lg-9">
-                                    <input name="fatherphone" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Mother's Phone <span style="font-size: 20px" class="text-danger"> * </span></label>
-                                <div class="col-lg-9">
-                                    <input name="motherphone" type="text" class="form-control">
-                                </div>
-                            </div>
-
                         </div>
                         <div class="col-xl-6">
                             <div class="text-center">
                             <label class="border" style="width:150px; height: 160px;">
-                            <img class="img-thumbnail" style="width:100%; height:100%;" id="student-photo-preview" src="" alt="">
+                            <img class="img-thumbnail" style="width:100%; height:100%;" id="student-photo-preview" src="{{url('storage/user/' . $user -> photo)}}" alt="">
                             </label>
                             </div>
                             <br>
                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Student Photo <span style="font-size: 20px" class="text-danger"> * </span></label>
+                                <label class="col-lg-3 col-form-label"> Photo <span style="font-size: 20px" class="text-danger"> * </span></label>
                                 <div class="col-lg-9">
                                     <input name="photo" type="file" class="form-control" id="student-photo">
                                 </div>
                             </div>
+
+
                             <div class="form-group row">
-                                <label class="col-lg-3 col-form-label"> Year</label>
+                                <label class="col-lg-3 col-form-label"> Employee ID <span style="font-size: 20px" class="text-danger"> * </span> </label>
                                 <div class="col-lg-9">
-                                    <select name="year" id="" class="form-control">
-                                        <option value="">-- Select Admission Year ---</option>
-                                        @foreach ($year as $item)
-                                        <option value="{{$item -> id}}">{{$item -> name}}</option>
+                                    <input disabled name="id_no" value="{{$user -> id_no}}" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label">Salary  <span style="font-size: 20px" class="text-danger"> * </span></label>
+                                <div class="col-lg-9">
+                                    <input name="salary" value="{{$user -> salary}}" type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label"> Designation <span style="font-size: 20px" class="text-danger"> * </span> </label>
+                                <div class="col-lg-9">
+                                    <select name="class" id="" class="form-control">
+                                        <option value="">-- Select Designation ---</option>
+                                        @foreach ($designation as $item)
+                                        <option {{ ($item-> id) == $user -> designation ? 'selected' : '' }} value="{{$item -> id}}">{{$item -> name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label"> Shift</label>
-                                <div class="col-lg-9">
-                                    <select name="shift" id="" class="form-control">
-                                        <option value="">-- Select Shift ---</option>
-                                        @foreach ($shift as $item)
-                                        <option value="{{$item -> id}}">{{$item -> name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Birth Certificate <span style="font-size: 20px" class="text-danger"> * </span> </label>
-                                <div class="col-lg-9">
-                                    <input name="bcn" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Father's NID  <span style="font-size: 20px" class="text-danger"> * </span></label>
-                                <div class="col-lg-9">
-                                    <input name="fnid" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Mother's NID  <span style="font-size: 20px" class="text-danger"> * </span></label>
-                                <div class="col-lg-9">
-                                    <input name="mnid" type="text" class="form-control">
-                                </div>
-                            </div>   
                         </div>
                     </div>
                     <h4 class="card-title">Present Address  <span style="font-size: 20px" class="text-danger"> * </span></h4>
@@ -163,13 +129,7 @@
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label">Address Line 1</label>
                                 <div class="col-lg-9">
-                                    <input name="address1" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Address Line 2</label>
-                                <div class="col-lg-9">
-                                    <input name="address2" type="text" class="form-control">
+                                    <input name="address1" value="{{$user -> address}}" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -248,34 +208,14 @@
 
                     <h4 class="card-title">Gurdian Information</h4>
                     <hr style="border-top: 5px solid green">
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Gurdian Name</label>
-                                <div class="col-lg-9">
-                                    <input name="gurdianname" type="text" class="form-control">
-                                </div>
-                            </div>
-                            
-                            
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="form-group row">
-                                <label class="col-lg-3 col-form-label">Gurdian Phone</label>
-                                <div class="col-lg-9">
-                                    <input name="gurdianphone" type="text" class="form-control">
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
+                   
 
                     <div class="text-right">
-                        <button class="btn btn-info">Submit</button>
+                        <button class="btn btn-info">Update</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-@endsection
+@endsection 

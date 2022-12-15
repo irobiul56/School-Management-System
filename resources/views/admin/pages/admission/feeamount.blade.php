@@ -23,25 +23,26 @@
                                     <th>#</th>
                                     <th>Photo</th>
                                     <th>Name</th>
-                                    <th>Admission Class</th>
-                                    <th>Phone</th>
                                     <th>Student Id</th>
-                                    <th>Created At</th>
+                                    <th>Fee Category</th>
+                                    <th>Amount</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 
-                                @forelse ($student as $item)   
+                                @forelse ($feeamount as $item) 
                                     <tr>
                                         <td>{{$loop -> index + 1}}</td>
-                                        <td><img style=" border-radius: 50%; padding: 5px; width: 60px; height: 60px" src="{{url('storage/students/'. $item -> photo )}}" alt=""></td>
+                                        <td><img style=" border-radius: 50%; padding: 5px; width: 60px; height: 60px" src="{{url('storage/students/'. $item ->photo )}}" alt=""></td>
                                         <td>{{$item -> name}}</td>
-                                        <td>{{$item -> studentclass -> name }}</td>
-                                        <td>{{$item -> fatherphone}}</td>
                                         <td><span style="border: 1px solid green; padding: 5px; border-radius: 10%; color: green; font-weight: bold;">{{$item -> student_id}}</span></p></td>
-                                        <td>{{$item -> created_at -> DiffForHumans()}}</td>
+                                        <td>{{$item -> categoryname}}</td>    
+                                        <td>{{$item -> amount}}</td>
+                                
+                                      
+                                       
 
                                         <td>
 
@@ -56,9 +57,9 @@
                                         </td>
 
                                         <td>
-                                            {{-- <a class="btn btn-sm btn-info" href="#"><i class="fa fa-eye"></i></a> --}}
+                                            {{-- <a class="btn btn-sm btn-info" href="#"><i class="fa fa-eye"></i></a>
                                             <a class="btn btn-sm btn-warning" href="{{route('admission.edit', $item -> id)}}"><i class="fa fa-edit"></i></a>
-                                            {{-- Trash --}}
+                                            {{-- Trash
                                             
                                             @if ($form_type == 'create')
                                             <a class="btn btn-sm btn-danger" href="{{route('student-trash', $item -> id)}}"><i class="fa fa-trash"></i></a>
@@ -66,16 +67,16 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-sm btn-danger" href="#"><i class="fa fa-trash"></i></button>
-                                                </form> --}}
+                                                </form>
                                             @endif
                                             
-                                            {{-- <a class="btn btn-sm btn-info" href="#"><i class="fa fa-eye"></i></a> --}}
+                                            {{-- <a class="btn btn-sm btn-info" href="#"><i class="fa fa-eye"></i></a> 
                                             <a class="btn btn-sm btn-success" target="_blank" href="{{route('admission-admit', $item -> id)}}">Download Admit</a>
-                                            {{-- Trash --}}
+                                            {{-- Trash
                                             
 
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                 @empty
                                     
                                 @endforelse
