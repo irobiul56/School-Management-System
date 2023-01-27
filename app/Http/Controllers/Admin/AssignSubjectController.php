@@ -19,7 +19,7 @@ class AssignSubjectController extends Controller
      */
     public function index()
     {
-        $assignsubject = Assignsubject::latest() -> where('status', true) -> get();
+        $assignsubject = Assignsubject::latest() -> select('class_id')-> groupBy('class_id') -> where('status', true) -> get();
         return view('admin.pages.studentsetup.assignsubjectshow', [
             'assignsubject'             => $assignsubject,
             'form_type'                 => 'create',

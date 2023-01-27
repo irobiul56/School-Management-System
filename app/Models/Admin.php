@@ -16,4 +16,9 @@ class Admin extends User
     {
         return $this->BelongsTo(Role::class, 'role', 'id');
     }
+
+    public function designation()
+    {
+        return $this->BelongsTo(designation::class, 'designation_id', 'id');
+    }
 }

@@ -1,5 +1,17 @@
 @extends('admin.layouts.app')
 @section('main-section')
+	<!-- Page Header -->
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">Welcome to Jamalpur Kaliakair M E H Arif Institute</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
     <div class="row">
         <div class="col-xl-3 col-sm-6 col-12">
             <div class="card">

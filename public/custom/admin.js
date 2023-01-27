@@ -25,4 +25,26 @@ $(document).ready( function () {
             btn_no-=1;
         })
 
+        //Select Class
+        $('select[name="class_id"]').on('change', function(){
+            var class_id = $(this).val();
+            if(class_id){
+                $.ajax({
+                    url:"get-subject/"+class_id,
+                    type:"GET",
+                    dataType:"json",
+                    success:function(data){
+                        $("#assign_subject_id").empty();
+                        $.each(data, function(key, value){
+                            $("#assign_subject_id").append('<option value="'+value.id+'">'+value.subject.name+'</option>');
+                        })
+                    }
+                })
+            }else{
+                alert('danger');
+            }
+        })
+
+
 });
+

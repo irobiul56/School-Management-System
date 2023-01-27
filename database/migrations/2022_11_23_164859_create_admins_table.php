@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('dob') -> nullable();
             $table->string('role') -> nullable();
             $table->string('join_date') -> nullable();
-            $table->string('designation_id') -> nullable();
+            $table->bigInteger('designation_id') -> nullable();
             $table->string('salary') -> nullable();
             $table->boolean('status') -> default(true);
             $table->boolean('trash') -> default(false);

@@ -5,10 +5,14 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header d-flex">
-                    <h4 class="card-title mr-auto">All Fee Category </h4> 
-                        <a href="#" class="btn btn-sm btn-danger mr-1">Trash Fee Amount <i class="fa fa-arrow-right"></i></a>
-                        <a href="{{route('show.assign.subject.form')}}" class="btn btn-sm btn-info">Assign Subject <i class="fa fa-plus-circle"></i></a>
+                <div class="card-header d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title">All GPA </h4> 
+                    </div>
+                    <div>
+                        <a href="{{route('grade.point.avarage')}}" class="btn btn-sm btn-info"> Grade Point Insert Form <i class="fa fa-arrow-right"></i></a>
+                        
+                    </div>
                 </div>
                 @include('validate-main')
                 <div class="card-body">
@@ -17,33 +21,36 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Student Class</th>
+                                    <th>Grade Name</th>
+                                    <th>Grade Point</th>
+                                    <th>Marks Range</th>
+                                    <th>Grade Range</th>
+                                    <th>Remarks</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 
-                                @forelse ($assignsubject as $item)   
+                                @forelse ($gradepoint as $item)   
                                     <tr>
                                         <td>{{$loop -> index + 1}}</td>
-                                        <td>{{$item -> studentclass -> name}}</td>
-                                        {{-- <td>{{$item -> created_at -> DiffForHumans()}}</td> --}}
-
+                                        <td>{{$item -> grade_name}}</td>
+                                        <td>{{$item -> grade_point }}</td>
+                                        <td>{{$item -> start_marks}} - {{$item -> end_marks}} </td>
+                                        <td>{{$item -> start_point}} - {{$item -> end_point}} </td>
+                                        <td>{{$item -> remarks }}</td>
 
                                         <td>
                                             <a class="btn btn-sm btn-info" href="#"><i class="fa fa-eye"></i></a>
-                                            <a class="btn btn-sm btn-warning" href="#"><i class="fa fa-edit"></i></a>
-
+                                            <a class="btn btn-sm btn-warning" href="{{route('grade-point.edit', $item -> id)}}"><i class="fa fa-edit"></i></a>
                                             {{-- Trash --}}
+                                        
                                             
-                                
-
                                         </td>
                                     </tr>
                                 @empty
                                     
                                 @endforelse
-
                             </tbody>
                         </table>
                     </div>

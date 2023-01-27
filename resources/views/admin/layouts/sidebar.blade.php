@@ -48,6 +48,17 @@
                 </li>
 
                 <li class="submenu">
+                    <a href="#"><i class="fe fe-document"></i> <span> Marks Management</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="{{route('marks-management.index')}}">Marks Entry</a></li>
+                        <li><a href="{{route('get.student.marks')}}">Edit Marks</a></li>
+                        <li><a href="{{route('grade-point.index')}}">Grade Point</a></li>
+                        <li><a href="{{route('tutorial-exam.index')}}">Tutorial Mark</a></li>
+                        <li><a href="#">Monthly Exam</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
                     <a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="invoice-report.html">Invoice Reports</a></li>

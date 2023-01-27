@@ -4,9 +4,12 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdmissionController;
 use App\Http\Controllers\Admin\AssignSubjectController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DefaultController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\Employee;
 use App\Http\Controllers\Admin\ExamTypeController;
+use App\Http\Controllers\Admin\GradepointController;
+use App\Http\Controllers\Admin\MarksController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\StudentClassController;
@@ -16,6 +19,7 @@ use App\Http\Controllers\Admin\StudentGroupController;
 use App\Http\Controllers\Admin\StudentShiftController;
 use App\Http\Controllers\Admin\Studentyear;
 use App\Http\Controllers\Admin\SubjectController;
+use App\Http\Controllers\Admin\TutorialExamController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,9 +57,25 @@ Route::resource('/role', RoleController::class);
 Route::resource('/user', AdminController::class);
 Route::resource('/employee', Employee::class);
 
+//Marks Management
+Route::resource('/marks-management', MarksController::class);
+Route::get('/get-subject/{id}', [DefaultController::class, 'getsubject'])->name('get.subject');
+Route::get('/get-student', [DefaultController::class, 'getstudent'])->name('get.student');
+Route::get('/get-student-edit-marks', [DefaultController::class, 'getstudenteditmarks'])->name('get.student.edit.marks');
+Route::post('/student-edit-marks', [DefaultController::class, 'marksedit'])->name('student.edit.marks');
+Route::get('/get-student-marks', [MarksController::class, 'getstudentmarks'])->name('get.student.marks');
+Route::get('/grade-point-avarage', [GradepointController::class, 'gradepointavarage'])->name('grade.point.avarage');
+Route::resource('/grade-point', GradepointController::class);
+Route::resource('/tutorial-exam', TutorialExamController::class);
+Route::get('/tutorial-marks-show', [TutorialExamController::class, 'tutorialmarkshow'])->name('tutorial.marks.show');
+Route::get('/tutorial-edit-marks', [TutorialExamController::class, 'tutorialeditmarks'])->name('tutorial.edit.marks');
+Route::post('/tutorial-marks-update', [TutorialExamController::class, 'tutorialdataupdate'])->name('tutorial.marks.update');
+
+
 Route::get('/student-form', [AdmissionController::class, 'showstudentform'])->name('show.student.form');
 Route::get('/student-status{id}', [AdmissionController::class, 'studentstatus'])->name('student.data.status');
 Route::get('/admission-admit-card{id}', [AdmissionController::class, 'admissionadmit'])->name('admission-admit');
+Route::get('/user-pdf', [AdminController::class, 'userpdf'])->name('user.pdf');
 
 
 Route::get('/student-fee-amount-form', [StudentFeeAmount::class, 'addfee'])->name('show.fee.add.form');
@@ -68,6 +88,12 @@ Route::get('/trash-student-show', [AdmissionController::class, 'trashstudentshow
 
 //student Registration fee
 Route::get('/registration-fee', [AdmissionController::class, 'registrationfee'])->name('registration-fee-show');
+
+
+
+//logout
+Route::get('/logout', [DashboardController::class, 'logout'])->name('user.logout');
+
 });
 
 Route::get('/login', [FrontendController::class, 'showloginform'])->name('show.login.form');

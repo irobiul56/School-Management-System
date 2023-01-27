@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\Admin;
 use App\Models\designation;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
@@ -29,8 +30,12 @@ class AdminController extends Controller
         ]);
     }
 
-
-
+    public function userpdf()
+    {
+        $user = Admin::latest() -> where('status', true) -> get();
+        $pdf = Pdf::loadView('admin.pages.user.employeepdf', compact('user'));
+        return $pdf->stream('invoice');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -54,7 +59,7 @@ class AdminController extends Controller
         $this -> validate($request,[
             'name'              => ['required'],
             'email'             => ['required', 'unique:admins'],
-            'phone'              => ['required', 'unique:admins'],
+            'phone'             => ['required', 'unique:admins'],
         ]);
 
 
@@ -100,7 +105,7 @@ class AdminController extends Controller
         ]);
 
 
-        $user -> notify(new UserCreateNotification([$user['name'], $pass ]));
+        $user -> notify(new UserCreateNotification([$user['name'], $pass, $final_id_no ]));
         return back() -> with('success','User created Successful!');
     }
 
@@ -143,7 +148,43 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this -> validate($request,[
+            'name'              => ['required'],
+            'email'             => ['required'],
+            'phone'             => ['required'],
+            'fname'             => ['required'],
+            'fname'             => ['required'],
+            'mname'             => ['required'],
+        ]);
+
+        if ($request -> hasFile('photo')) {
+            $img = $request -> file('photo');
+            $imageName = md5(time().rand()) . '.' . $img -> clientExtension();
+
+            $image = Image::make($img -> getRealPath());
+
+            $image -> save(storage_path('app/public/user/') . $imageName);
+            }
+
+            $student_data = Admin::findOrfail($id);
+            $student_data -> update([
+            'image'                 => $imageName ?? '',
+            'name'                  => $request -> name,
+            'fname'                 => $request -> fname,
+            'mname'                 => $request -> mname,
+            'gender'                => $request -> gender,
+            'religion'              => $request -> religion,
+            'dob'                   => $request -> dob,
+            'phone'                 => $request -> phone,
+            'email'                 => $request -> email,
+            'role'                  => $request -> role,
+            'join_date'             => $request -> join_date,
+            'salary'                => $request -> salary,
+            'designation_id'        => $request -> designation,
+            'address'               => $request -> address1,
+        ]);
+    
+        return back() -> with('success', 'Employee Data Update Successful');
     }
 
     /**

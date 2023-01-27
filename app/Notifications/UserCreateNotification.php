@@ -13,6 +13,7 @@ class UserCreateNotification extends Notification
 
     private $name;
     private $password;
+    private $final_id_no;
 
     /**
      * Create a new notification instance.
@@ -23,6 +24,7 @@ class UserCreateNotification extends Notification
     {
         $this -> name       = $data[0];
         $this-> password    = $data[1];
+        $this-> final_id_no    = $data[2];
     }
 
     /**
@@ -47,6 +49,7 @@ class UserCreateNotification extends Notification
         return (new MailMessage)
                     ->line('Hi ' . $this -> name . ' Welcome to Arif Institute')
                     ->line('Your Password is: ' . $this -> password)  
+                    ->line('Your Employee Id is: ' . $this -> final_id_no)  
                     ->line('Thank you for using our application!');
     }
 

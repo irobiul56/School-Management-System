@@ -27,11 +27,15 @@
 		<!-- Data Table -->
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"/>
 
-		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		<!--[if lt IE 9]>
 			<script src="admin/assets/js/html5shiv.min.js"></script>
 			<script src="admin/assets/js/respond.min.js"></script>
 		<![endif]-->
+		<meta name="csrf-token" content="{{ csrf_token() }}">
+
+		
+
     </head>
     <body>
 	
@@ -47,18 +51,6 @@
 			
                 <div class="content container-fluid">
 					
-					<!-- Page Header -->
-					<div class="page-header">
-						<div class="row">
-							<div class="col-sm-12">
-								<h3 class="page-title">Welcome to Jamalpur Kaliakair M E H Arif Institute</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item active">Dashboard</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- /Page Header -->
 
 					
                     @section('main-section')
@@ -99,6 +91,15 @@
 
 	 <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 	 <script  src="{{asset('custom/admin.js')}}"></script>
+
+	 <script>
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+	 </script>
+	 
 		
     </body>
 </html>

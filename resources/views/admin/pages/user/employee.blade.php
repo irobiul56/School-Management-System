@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h4 class="card-title"> All Employee </h4> 
-                    <a href="#" class="btn btn-sm btn-danger">Trash User<i class="fa fa-arrow-right"></i></a>
+                    <a href="{{route('user.pdf')}}" class="btn btn-sm btn-success">Export User<i class="fa fa-arrow-right"></i></a>
                 </div>
                 @include('validate-main')
                 <div class="card-body">
@@ -30,11 +30,11 @@
                                     <tr>
                                         <td>{{$loop -> index + 1}}</td>
                                         <td>{{$item -> name}}</td>
-                                        <td>{{$item -> roleuser -> name}}</td>
+                                        <td>{{$item -> designation -> name}}</td>
                                         <td>{{$item -> phone}}</td>
                                         <td>{{$item -> gender}}</td>
                                         <td>{{$item -> dob}}</td>
-                                        <td>{{$item -> photo}}</td>
+                                        <td><img style=" border-radius: 50%; padding: 5px; width: 60px; height: 60px" src="{{url('storage/user/'. $item -> image )}}" alt=""></td>
                                        
 
                                     </tr>
