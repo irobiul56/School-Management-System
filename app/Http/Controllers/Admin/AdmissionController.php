@@ -83,7 +83,6 @@ class AdmissionController extends Controller
         'dob'                   => 'required',
         'pastschool'            => 'required',
         'class'                 => 'required',
-        'group'                 => 'required',
         'motherphone'           => 'required',
         'fatherphone'           => 'required',
         'photo'                 => 'required',
@@ -165,7 +164,7 @@ class AdmissionController extends Controller
         $assignstudent = Assignstudent::create([
             'student_id'            => $students -> id,
             'class_id'              => $request -> class,
-            'group_id'              => $request -> group,
+            'group_id'              => $request -> group ?? 0,
             'shift_id'              => $request -> shift,
             'year_id'               => $request -> year,
         ]);
@@ -227,7 +226,6 @@ class AdmissionController extends Controller
             'dob'                   => 'required',
             'pastschool'            => 'required',
             'class'                 => 'required',
-            'group'                 => 'required',
             'motherphone'           => 'required',
             'fatherphone'           => 'required',
             'year'                  => 'required',

@@ -15,4 +15,11 @@ class Studentmarks extends Model
     {
         return $this->BelongsTo(Student::class, 'student_id', 'id');
     }
+
+    public function tutorialmarks()
+    {
+        return $this->BelongsTo(tutorialmarksmodel::class, 'student_id', 'student_id');
+    }
+
+    
 }

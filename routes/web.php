@@ -3,13 +3,17 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdmissionController;
 use App\Http\Controllers\Admin\AssignSubjectController;
+use App\Http\Controllers\Admin\ClasswiseResultsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DefaultController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\Employee;
 use App\Http\Controllers\Admin\ExamTypeController;
+use App\Http\Controllers\Admin\FinalExamResult;
+use App\Http\Controllers\Admin\FinalExamResultController;
 use App\Http\Controllers\Admin\GradepointController;
 use App\Http\Controllers\Admin\MarksController;
+use App\Http\Controllers\Admin\MonthlyExamController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\StudentClassController;
@@ -34,9 +38,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
 
 Route::group(['middleware' => 'admin'], function(){
 
@@ -64,12 +65,28 @@ Route::get('/get-student', [DefaultController::class, 'getstudent'])->name('get.
 Route::get('/get-student-edit-marks', [DefaultController::class, 'getstudenteditmarks'])->name('get.student.edit.marks');
 Route::post('/student-edit-marks', [DefaultController::class, 'marksedit'])->name('student.edit.marks');
 Route::get('/get-student-marks', [MarksController::class, 'getstudentmarks'])->name('get.student.marks');
+
+//Grade Point
 Route::get('/grade-point-avarage', [GradepointController::class, 'gradepointavarage'])->name('grade.point.avarage');
 Route::resource('/grade-point', GradepointController::class);
+
+//Tutorial Marks Management
 Route::resource('/tutorial-exam', TutorialExamController::class);
 Route::get('/tutorial-marks-show', [TutorialExamController::class, 'tutorialmarkshow'])->name('tutorial.marks.show');
 Route::get('/tutorial-edit-marks', [TutorialExamController::class, 'tutorialeditmarks'])->name('tutorial.edit.marks');
 Route::post('/tutorial-marks-update', [TutorialExamController::class, 'tutorialdataupdate'])->name('tutorial.marks.update');
+
+//Tutorial Marks Management
+Route::resource('/monthly-exam', MonthlyExamController::class);
+
+//Final Exam Result
+Route::resource('/results', FinalExamResultController::class);
+Route::resource('/class-wise-results', ClasswiseResultsController::class);
+
+//publish result
+Route::post('/publish-result', [FinalExamResultController::class, 'publishresult'])->name('publish.result');
+Route::get('/final-class-results', [ClasswiseResultsController::class, 'finalclasswiseresult'])->name('final.class.wise.result');
+
 
 
 Route::get('/student-form', [AdmissionController::class, 'showstudentform'])->name('show.student.form');
@@ -90,7 +107,6 @@ Route::get('/trash-student-show', [AdmissionController::class, 'trashstudentshow
 Route::get('/registration-fee', [AdmissionController::class, 'registrationfee'])->name('registration-fee-show');
 
 
-
 //logout
 Route::get('/logout', [DashboardController::class, 'logout'])->name('user.logout');
 
@@ -98,3 +114,7 @@ Route::get('/logout', [DashboardController::class, 'logout'])->name('user.logout
 
 Route::get('/login', [FrontendController::class, 'showloginform'])->name('show.login.form');
 Route::post('/user-login', [FrontendController::class, 'userlogin'])->name('user.login');
+
+Route::get('/result', [FrontendController::class, 'resultsearchpage'])->name('result.search.form');
+Route::get('/search-result', [FrontendController::class, 'resultsearch'])->name('result.search');
+Route::get('/', [FrontendController::class, 'homepage'])->name('home.page');

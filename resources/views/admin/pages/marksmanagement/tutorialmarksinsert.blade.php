@@ -89,7 +89,7 @@
 
                             <div class="card-body">
                                 <div id="marks-entry" class="table-responsive d-none">
-                                    <table class="table mb-0">
+                                    <table class="table mb-0 data-table-search">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -101,6 +101,7 @@
                                                 <th>4th Tutorial</th>
                                                 <th>5th Tutorial</th>
                                                 <th>6th Tutorial</th>
+                                                <th>Monthly Exam</th>
                                                 
                                             </tr>
                                         </thead>
@@ -150,9 +151,10 @@
                                 '<td><input type="text" class="form-control border border-primary" name="forth_tutorial[]"> </td>'+
                                 '<td><input type="text" class="form-control border border-primary" name="fifth_tutorial[]"> </td>'+
                                 '<td><input type="text" class="form-control border border-primary" name="six_tutorial[]"> </td>'+
+                                '<td><input type="text" class="form-control border border-primary" name="monthly_exam[]"> </td>'+
                                 '<input type="hidden" name="id[]" value="'+value.studentinfo.id+'"></td>'+
-
                             '</tr>';
+                            
                             i++;
                         });
                         html = $('#marks-entry-tr').html(html);

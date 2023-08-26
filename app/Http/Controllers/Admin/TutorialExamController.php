@@ -52,7 +52,7 @@ class TutorialExamController extends Controller
        $assign_subject_id = $request -> assign_subject_id;
        $tutorial_for_terminal_exam = $request -> tutorial_for_terminal_exam;
    
-       $alldata = tutorialmarksmodel::with('studentinfo')->where('class_id', $class_id) ->where('year_id', $year_id)->where('assign_subject_id', $assign_subject_id)->where('tutorial_for_terminal_exam', $tutorial_for_terminal_exam)->get();
+       $alldata = tutorialmarksmodel::with('studentinfo')->where('class_id', $class_id) ->where('year_id', $year_id)->where('assign_subject_id', $assign_subject_id)->where('exam_type_id', $tutorial_for_terminal_exam)->get();
        return response()->json($alldata);
     }
 
@@ -89,7 +89,7 @@ class TutorialExamController extends Controller
                 $data -> class_id = $request -> class_id;
                 $data -> year_id  = $request -> year_id;
                 $data -> assign_subject_id  = $request -> assign_subject_id;
-                $data -> tutorial_for_terminal_exam = $request -> tutorial_for_terminal_exam;
+                $data -> exam_type_id = $request -> tutorial_for_terminal_exam;
                 $data -> student_id  = $request -> id[$i];
                 $data -> id_no  = $request -> student_id[$i];
                 $data -> first_tutorial	= $request -> first_tutorial[$i] ?: 0;
@@ -98,6 +98,7 @@ class TutorialExamController extends Controller
                 $data -> forth_tutorial	= $request -> forth_tutorial[$i] ?: 0;
                 $data -> fifth_tutorial	= $request -> fifth_tutorial[$i] ?:0;
                 $data -> six_tutorial	= $request -> six_tutorial[$i] ?: 0;
+                $data -> monthly_exam	= $request -> monthly_exam[$i] ?: 0;
                 $data -> save();
             
             }
@@ -156,7 +157,7 @@ class TutorialExamController extends Controller
                 $data -> class_id = $request -> class_id;
                 $data -> year_id  = $request -> year_id;
                 $data -> assign_subject_id  = $request -> assign_subject_id;
-                $data -> tutorial_for_terminal_exam = $request -> tutorial_for_terminal_exam;
+                $data -> exam_type_id = $request -> tutorial_for_terminal_exam;
                 $data -> student_id  = $request -> id[$i];
                 $data -> id_no  = $request -> student_id[$i];
                 $data -> first_tutorial	= $request -> first_tutorial[$i];
@@ -165,6 +166,7 @@ class TutorialExamController extends Controller
                 $data -> forth_tutorial	= $request -> forth_tutorial[$i];
                 $data -> fifth_tutorial	= $request -> fifth_tutorial[$i];
                 $data -> six_tutorial	= $request -> six_tutorial[$i];
+                $data -> monthly_exam	= $request -> monthly_exam[$i];
                 $data -> save();
             
             }

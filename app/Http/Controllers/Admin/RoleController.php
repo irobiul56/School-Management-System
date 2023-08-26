@@ -77,7 +77,15 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit = Role::findOrFail($id);
+        $permission = Permission::latest() -> get();
+        $role = Role::latest() -> get();
+        return view('admin.pages.user.role', [
+            'permission'            => $permission,
+            'role'                  => $role,
+            'form_type'             => 'edit',
+            'edit'                  => $edit,
+        ]);
     }
 
     /**
@@ -89,7 +97,14 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update_data = Role::findOrfail($id);
+        $update_data ->update([
+            'name'          => $request -> name,
+            'slug'          => Str::slug($request -> name),
+            'permission'   => json_encode($request -> permission)
+        ]);
+
+        return back() -> with('success-main', 'Role Updated Successful');
     }
 
     /**

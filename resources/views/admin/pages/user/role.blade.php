@@ -115,38 +115,43 @@
                 </div>
             @endif
 
-            {{-- @if ($form_type == 'edit')
+            @if ($form_type == 'edit')
                 <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Add New Testimonial</h4>
+                    <div class="card-header d-flex justify-content-between">
+                        <h4 class="card-title">Edit Role</h4>
+                        <a class="btn-sm btn-info" href="{{route('role.index')}}">Back</a>
                     </div>
                     <div class="card-body">
-                     @include('validate')
-                        <form action="{{route('testimonials.update', $testimonial -> id)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('role.update', $edit -> id)}}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label>Text</label>
-                                <input name="text" type="text" value="{{$testimonial -> text}}" class="form-control">
+                                @include('validate')
+                                <label>Name</label>
+                                <input name="name" type="text" value="{{$edit -> name}}" class="form-control">
                             </div>
-
                             <div class="form-group">
-                              <label>Client</label>
-                              <input name="client" type="text" value="{{$testimonial -> client}}" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Company</label>
-                                <input name="company" type="text" value="{{$testimonial -> company}}" class="form-control">
-                              </div>
-
+                                <ul style="list-style:none; padding: 0px">
+                                     @forelse (json_decode($permission) as $item)
+                                     <li>
+                                         <label><input @if (in_array($item -> name, json_decode($edit -> permission))) checked  @endif name="permission[]" value="{{$item -> name}}" type="checkbox">{{$item -> name}}</label>
+                                     </li>
+                                     @empty
+                                     <li>
+                                         <label for="" class="text-cemter text-danger">No Record Found</label>
+                                     </li> 
+                                     @endforelse
+                                     
+                                </ul>
+                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </form>
                     </div>
                 </div>
-            @endif --}}
+            @endif
+
         </div>
     </div>
     

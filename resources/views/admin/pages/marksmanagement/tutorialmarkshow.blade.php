@@ -101,6 +101,7 @@
                                                 <th>4th Tutorial</th>
                                                 <th>5th Tutorial</th>
                                                 <th>6th Tutorial</th>
+                                                <th>Monthly Exam</th>
                                                 
                                             </tr>
                                         </thead>
@@ -150,6 +151,7 @@
                                 '<td><input type="text" class="form-control border border-primary" name="forth_tutorial[]" value="'+value.forth_tutorial+'"> </td>'+
                                 '<td><input type="text" class="form-control border border-primary" name="fifth_tutorial[]" value="'+value.fifth_tutorial+'"> </td>'+
                                 '<td><input type="text" class="form-control border border-primary" name="six_tutorial[]" value="'+value.six_tutorial+'"> </td>'+
+                                '<td><input type="text" class="form-control border border-primary" name="monthly_exam[]" value="'+value.monthly_exam+'"> </td>'+
                                 '<input type="hidden" name="id[]" value="'+value.studentinfo.id+'"></td>'+
 
                             '</tr>';

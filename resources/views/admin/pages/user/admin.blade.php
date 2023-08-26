@@ -29,7 +29,7 @@
                                     <tr>
                                         <td>{{$loop -> index + 1}}</td>
                                         <td>{{$item -> name}}</td>
-                                        <td>{{$item -> roleuser -> name}}</td>
+                                        <td>{{$item -> roleuser -> name ?? null}}</td>
                                         <td>{{$item -> created_at -> DiffForHumans()}}</td>
 
                                         <td>

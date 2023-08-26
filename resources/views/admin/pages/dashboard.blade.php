@@ -21,11 +21,17 @@
                             <i class="fe fe-users"></i>
                         </span>
                         <div class="dash-count">
-                            <h3>168</h3>
+
+                            @php
+                                $teacher = App\Models\Admin::where('status', true) -> count();
+                            @endphp
+                            <h3>
+                                {{$teacher}}
+                            </h3>
                         </div>
                     </div>
                     <div class="dash-widget-info">
-                        <h6 class="text-muted">Doctors</h6>
+                        <h6 class="text-muted">Teachers</h6>
                         <div class="progress progress-sm">
                             <div class="progress-bar bg-primary w-50"></div>
                         </div>
@@ -38,15 +44,20 @@
                 <div class="card-body">
                     <div class="dash-widget-header">
                         <span class="dash-widget-icon text-success">
-                            <i class="fe fe-credit-card"></i>
+                            <i class="fe fe-user"></i>
                         </span>
                         <div class="dash-count">
-                            <h3>487</h3>
+                            @php
+                                $student = App\Models\Student::where('status', true) -> where('trash', false) -> count();
+                            @endphp
+                        <h3>
+                            {{$student}}
+                        </h3>
                         </div>
                     </div>
                     <div class="dash-widget-info">
                         
-                        <h6 class="text-muted">Patients</h6>
+                        <h6 class="text-muted">Students</h6>
                         <div class="progress progress-sm">
                             <div class="progress-bar bg-success w-50"></div>
                         </div>
