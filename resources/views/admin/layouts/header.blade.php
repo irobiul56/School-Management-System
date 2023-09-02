@@ -3,9 +3,9 @@
 			
     <!-- Logo -->
     <div class="header-left">
-        <a href="index.html" class="logo">
-            {{-- <img src="{{asset('admin/assets/img/logo.png')}}" alt="Logo"> --}}
-            <a href="#"><h3>JKMEHAI</h3></a>
+        <a href="{{route('admin.dashboard')}}" class="logo">
+            <img src="{{asset('admin/assets/img/logo.png')}}" style="width: 50px; height: 50px" alt="Logo">
+            {{-- <a href="#"><h2>Arif Institute</h2></a> --}}
         </a>
         <a href="index.html" class="logo logo-small">
             {{-- <img src="{{asset('admin/assets/img/logo-small.png')}}" alt="Logo" width="30" height="30"> --}}

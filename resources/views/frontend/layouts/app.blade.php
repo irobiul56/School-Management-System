@@ -15,7 +15,7 @@
     <title>Jamalpur Kaliakair MEH Arif Institute</title>
     
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="frontend/pages/images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="{{asset('admin/assets/img/logo.png')}}" type="image/png">
 
     <!--====== Slick css ======-->
     <link rel="stylesheet" href="frontend/pages/css/slick.css">
@@ -46,6 +46,8 @@
     
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="frontend/pages/css/responsive.css">
+
+    
   
   
 </head>

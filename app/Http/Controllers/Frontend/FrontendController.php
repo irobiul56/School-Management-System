@@ -8,7 +8,12 @@ use App\Models\Studentclass;
 use Illuminate\Http\Request;
 use App\Models\finalstudentsmarks;
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use App\Models\Admin;
+use App\Models\Apply;
+use App\Models\Notice;
+use App\Models\Slider;
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
@@ -64,6 +69,19 @@ class FrontendController extends Controller
     }
 
     public function homepage() {
-        return view('frontend.layouts.pages.homepage');
+        $sliders = Slider::Where('status', true) ->where('trash', false)->latest() -> get();
+        $about = About::Where('status', true) ->where('trash', false)->latest() -> get();
+        $apply = Apply::Where('status', true) ->where('trash', false)->latest() -> get();
+        $teacher = Admin::Where('status', true) ->where('trash', false)->latest() -> limit(4) -> get();
+        $notice = Notice::with('userdata')->Where('status', true) ->where('trash', false)->latest() -> limit(3) -> get();
+        $testimonial = Testimonial::Where('status', true) ->where('trash', false)->latest() -> get();
+        return view('frontend.layouts.pages.homepage',[
+           'sliders'            =>  $sliders,
+           'about'              =>  $about,
+           'notice'             =>  $notice,
+           'apply'              =>  $apply,
+           'teacher'            =>  $teacher,
+           'testimonial'        =>  $testimonial,
+        ]);
     }
 }

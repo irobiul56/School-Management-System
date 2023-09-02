@@ -5,7 +5,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-about mt-40">
                         <div class="logo">
-                            <a href="#"><img src="images/logo-2.png" alt="Logo"></a>
+                            <a href="#"><img src="{{asset('admin/assets/img/logo.png')}}"  style="height:100px; width:100px" alt="Logo"></a>
                         </div>
                         <p>Gravida nibh vel velit auctor aliquetn quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate.</p>
                         <ul class="mt-20">
@@ -62,7 +62,7 @@
                                     <i class="fa fa-home"></i>
                                 </div>
                                 <div class="cont">
-                                    <p>143 castle road 517 district, kiyev port south Canada</p>
+                                    <p>Jamalpur, Kaliakair, Gazipur.</p>
                                 </div>
                             </li>
                             <li>
@@ -70,7 +70,7 @@
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <div class="cont">
-                                    <p>+3 123 456 789</p>
+                                    <p>8801309138855</p>
                                 </div>
                             </li>
                             <li>
@@ -78,7 +78,7 @@
                                     <i class="fa fa-envelope-o"></i>
                                 </div>
                                 <div class="cont">
-                                    <p>info@yourmail.com</p>
+                                    <p>arifinstitute57@gmail.com</p>
                                 </div>
                             </li>
                         </ul>
@@ -93,12 +93,12 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="copyright text-md-left text-center pt-15">
-                        <p>&copy; Copyrights 2020 Edubin All rights reserved. </p>
+                        <p>&copy; Copyrights 2016 arifinstitute All rights reserved. </p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="copyright text-md-right text-center pt-15">
-                        <p>Designed by <span>Pixelcurve</span> </p>
+                        <p>Designed by <span><a href="https://tech-our.com">tech-our.com</a></span> </p>
                     </div>
                 </div>
             </div> <!-- row -->

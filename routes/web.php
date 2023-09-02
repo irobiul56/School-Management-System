@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdmissionController;
+use App\Http\Controllers\Admin\ApplyController;
 use App\Http\Controllers\Admin\AssignSubjectController;
+use App\Http\Controllers\Admin\BlogPostController;
+use App\Http\Controllers\Admin\CategoryPostController;
 use App\Http\Controllers\Admin\ClasswiseResultsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DefaultController;
@@ -14,8 +18,10 @@ use App\Http\Controllers\Admin\FinalExamResultController;
 use App\Http\Controllers\Admin\GradepointController;
 use App\Http\Controllers\Admin\MarksController;
 use App\Http\Controllers\Admin\MonthlyExamController;
+use App\Http\Controllers\Admin\Notice;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SliderController as AdminSliderController;
 use App\Http\Controllers\Admin\StudentClassController;
 use App\Http\Controllers\Admin\StudentFeeAmount;
 use App\Http\Controllers\Admin\StudentFeeCategory;
@@ -23,8 +29,12 @@ use App\Http\Controllers\Admin\StudentGroupController;
 use App\Http\Controllers\Admin\StudentShiftController;
 use App\Http\Controllers\Admin\Studentyear;
 use App\Http\Controllers\Admin\SubjectController;
+use App\Http\Controllers\Admin\TagPostController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\TutorialExamController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\SliderController;
+use App\Models\Apply;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -109,6 +119,54 @@ Route::get('/registration-fee', [AdmissionController::class, 'registrationfee'])
 
 //logout
 Route::get('/logout', [DashboardController::class, 'logout'])->name('user.logout');
+
+//Slider Routes
+Route::resource('/slider', AdminSliderController::class);
+Route::get('/slider-status-update/{id}', [AdminSliderController::class, 'sliderStatus'])->name('slider.status.update');
+Route::get('/slider-trash-update/{id}', [AdminSliderController::class, 'slideTrash'])->name('slide.trash');
+Route::get('/trash-slider', [AdminSliderController::class, 'showTrashSlider'])->name('show.trash.slider');
+
+//Home Page About Route
+Route::resource('/about', AboutController::class);
+Route::get('/about-status-update/{id}', [AboutController::class, 'aboutStatus'])->name('about.status.update');
+Route::get('/about-trash-update/{id}', [AboutController::class, 'aboutTrash'])->name('about.trash');
+Route::get('/trash-about', [AboutController::class, 'showTrashAbout'])->name('show.trash.about');
+
+//Notice Route
+Route::resource('/notice', Notice::class);
+Route::get('/notice-status-update/{id}', [Notice::class, 'noticeStatus'])->name('notice.status.update');
+Route::get('/notice-trash-update/{id}', [Notice::class, 'noticeTrash'])->name('notice.trash');
+Route::get('/trash-notice', [Notice::class, 'showTrashNotice'])->name('show.trash.notice');
+
+//Notice Route
+Route::resource('/apply', ApplyController::class);
+Route::get('/apply-status-update/{id}', [ApplyController::class, 'applyStatus'])->name('apply.status.update');
+Route::get('/apply-trash-update/{id}', [ApplyController::class, 'applyTrash'])->name('apply.trash');
+Route::get('/trash-apply', [ApplyController::class, 'showTrashApply'])->name('show.trash.apply');
+
+//Testimonial Route
+Route::resource('/testimonial', TestimonialController::class);
+Route::get('/testimonial-status-update/{id}', [TestimonialController::class, 'testimonialStatus'])->name('testimonial.status.update');
+Route::get('/testimonial-trash-update/{id}', [TestimonialController::class, 'testimonialTrash'])->name('testimonial.trash');
+Route::get('/trash-testimonial', [TestimonialController::class, 'showTrashTestimonial'])->name('show.trash.testimonial');
+
+//post Route
+Route::resource('/tag', TagPostController::class);
+Route::get('/tag-status-update/{id}', [TagPostController::class, 'tagStatus'])->name('tag.status.update');
+Route::get('/tag-trash-update/{id}', [TagPostController::class, 'tagTrash'])->name('tag.trash');
+Route::get('/trash-tag', [TagPostController::class, 'showTrashTag'])->name('show.trash.tag');
+
+Route::resource('/category', CategoryPostController::class);
+Route::get('/category-status-update/{id}', [CategoryPostController::class, 'categoryStatus'])->name('category.status.update');
+Route::get('/category-trash-update/{id}', [CategoryPostController::class, 'categoryTrash'])->name('category.trash');
+Route::get('/trash-category', [CategoryPostController::class, 'showTrashCategory'])->name('show.trash.category');
+
+Route::resource('/post', BlogPostController::class);
+Route::get('/allpost', [BlogPostController::class, 'showAllPost'])->name('show.all.post');
+Route::get('/blogpost-status-update/{id}', [BlogPostController::class, 'blogpostStatus'])->name('blogpost.status.update');
+Route::get('/blogpost-trash-update/{id}', [BlogPostController::class, 'blogpostTrash'])->name('blogpost.trash');
+Route::get('/trash-blogpost', [BlogPostController::class, 'showTrashbBogpost'])->name('show.trash.blogpost');
+
 
 });
 

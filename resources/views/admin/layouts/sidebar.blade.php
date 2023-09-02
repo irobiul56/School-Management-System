@@ -6,22 +6,105 @@
                 <li class="menu-title"> 
                     <span>Main</span>
                 </li>
-                <li> 
-                    <a href="{{route('admin.dashboard')}}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+                <li> <a href="{{route('admin.dashboard')}}"><i class="fe fe-home"></i> <span>Dashboard</span></a> </li>
+
+                <li class="submenu">
+                    <a href="#"><i class="fe fe-document"></i> <span> Home Page</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="{{route('slider.index')}}">Slider</a></li>
+                        <li><a href="#">Category</a></li>
+                        <li><a href="{{route('about.index')}}">About</a></li>
+                        <li><a href="{{route('notice.index')}}">Notice</a></li>
+                        <li><a href="{{route('apply.index')}}">Apply</a></li>
+                        <li><a href="{{route('testimonial.index')}}">Testimonial</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#"><i class="fe fe-document"></i> <span> About Us Page</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="#">At a Glance</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Mission and Vison</a></li>
+                        <li><a href="#">News and Event</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#"><i class="fe fe-document"></i> <span> Administration </span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="#">Governing Body</a></li>
+                        <li><a href="#">Chairman Message</a></li>
+                        <li><a href="#">Teacher Staff</a></li>
+                        <li><a href="#">Staff Information</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"><i class="fe fe-document"></i> <span> Academic </span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="#">Academic Calendar</a></li>
+                        <li><a href="#">Class Routine</a></li>
+                        <li><a href="#">Syllabus</a></li>
+                        <li><a href="#">Book List</a></li>
+                        <li><a href="#">Exam Result</a></li>
+                        <li><a href="#">Academic Rules</a></li>
+                    </ul>
                 </li>
 
                 @if (in_array('Admission', json_decode(Auth::guard('admin') -> user() -> roleuser -> permission)))
-                           
                 <li class="submenu">
                     <a href="#"><i class="fe fe-document"></i> <span> Admission</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="{{route('admission.index')}}">All Student</a></li>
+                        <li><a href="#">Admission Circular</a></li>
+                        <li><a href="#">Prospectus</a></li>
                         <li><a href="#">Admit Card</a></li>
                         <li><a href="#">Sit Plan</a></li>
                         <li><a href="#">Admission Result</a></li>
                     </ul>
                 </li>
 				@endif
+
+                <li class="submenu">
+                    <a href="#"><i class="fe fe-document"></i> <span> Facilities </span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="#">Classroom</a></li>
+                        <li><a href="#">Computer Lab</a></li>
+                        <li><a href="#">Science Lab</a></li>
+                        <li><a href="#">Library</a></li>
+                        <li><a href="#">Play Ground</a></li>
+                        <li><a href="#">Canteen</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#"><i class="fe fe-document"></i> <span> Co-Curricular </span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="#">Sports & Game</a></li>
+                        <li><a href="#">Tours</a></li>
+                        <li><a href="#">BNCC</a></li>
+                        <li><a href="#">SCOUT</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu">
+                    <a href="#"><i class="fe fe-document"></i> <span> Gallery </span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="#">Photo Gallery</a></li>
+                        <li><a href="#">Video Gallery</a></li>
+                    </ul>
+                </li>
+
+                <li> <a href="#"><i class="fe fe-home"></i> <span>Digital Class</span></a> </li>
+
+                <li class="submenu">
+                    <a href="#"><i class="fe fe-document"></i> <span> Blog Post</span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a href="{{route('show.all.post')}}">All Post</a></li>
+                        <li><a href="{{route('category.index')}}">Category</a></li>
+                        <li><a href="{{route('tag.index')}}">Tag</a></li>
+                    </ul>
+                </li>
              
                 @if (in_array('Setup Management', json_decode(Auth::guard('admin') -> user() -> roleuser -> permission)))
                 <li class="submenu">

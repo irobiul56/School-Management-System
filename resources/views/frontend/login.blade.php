@@ -7,8 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
         <title>Doccure - Login</title>
 		
-		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="{{asset('admin/assets/img/favicon.png')}}">
+		 <!--====== Favicon Icon ======-->
+		 <link rel="shortcut icon" href="{{asset('admin/assets/img/logo.png')}}" type="image/png">
 
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{asset('admin/assets/css/bootstrap.min.css')}}">

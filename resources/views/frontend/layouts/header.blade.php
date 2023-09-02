@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-lg-2 col-md-3 col-sm-12">
                     <div class="logo">
-                        <a href="#">
+                        <a href="{{route('home.page')}}">
                             <img src="{{asset('admin/assets/img/logo.png')}}" alt="Logo" style="height:100px; width:100px">
                         </a>
                     </div>
@@ -93,7 +93,7 @@
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="active" href="#">Home</a>
+                                    <a class="active" href="{{route('home.page')}}">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#">About Us</a>
@@ -168,7 +168,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#"><b class="text-success">Apply</b></a>
+                                    <a href="/#apply"><b class="text-success">Apply</b></a>
                                 </li>
                                 
                             </ul>
