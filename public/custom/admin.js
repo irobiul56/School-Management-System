@@ -57,8 +57,7 @@ $(document).ready( function () {
                     e.preventDefault();
                 }
             });
-    
-            $('.data-table-search').DataTable();
+            
     
             $('#slider-photo').change(function(e){
     
@@ -137,7 +136,7 @@ $(document).ready( function () {
                     } );
                 
                 
-            $('.comet-select-2').select2();
+                $('.blog-tag-2').select2();
 
 
 });

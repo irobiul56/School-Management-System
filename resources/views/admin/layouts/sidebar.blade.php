@@ -23,10 +23,10 @@
                 <li class="submenu">
                     <a href="#"><i class="fe fe-document"></i> <span> About Us Page</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li><a href="#">At a Glance</a></li>
-                        <li><a href="#">History</a></li>
-                        <li><a href="#">Mission and Vison</a></li>
-                        <li><a href="#">News and Event</a></li>
+                        <li><a href="{{route('post.index')}}">At a Glance</a></li>
+                        <li><a href="{{route('post.index')}}">History</a></li>
+                        <li><a href="{{route('post.index')}}">Mission and Vison</a></li>
+                        <li><a href="{{route('post.index')}}">News and Event</a></li>
                     </ul>
                 </li>
 

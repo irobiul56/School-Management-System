@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdmissionController;
 use App\Http\Controllers\Admin\ApplyController;
@@ -150,23 +151,24 @@ Route::get('/testimonial-status-update/{id}', [TestimonialController::class, 'te
 Route::get('/testimonial-trash-update/{id}', [TestimonialController::class, 'testimonialTrash'])->name('testimonial.trash');
 Route::get('/trash-testimonial', [TestimonialController::class, 'showTrashTestimonial'])->name('show.trash.testimonial');
 
-//post Route
+//Tag post Route
 Route::resource('/tag', TagPostController::class);
 Route::get('/tag-status-update/{id}', [TagPostController::class, 'tagStatus'])->name('tag.status.update');
 Route::get('/tag-trash-update/{id}', [TagPostController::class, 'tagTrash'])->name('tag.trash');
 Route::get('/trash-tag', [TagPostController::class, 'showTrashTag'])->name('show.trash.tag');
 
+//Category post Route
 Route::resource('/category', CategoryPostController::class);
 Route::get('/category-status-update/{id}', [CategoryPostController::class, 'categoryStatus'])->name('category.status.update');
 Route::get('/category-trash-update/{id}', [CategoryPostController::class, 'categoryTrash'])->name('category.trash');
 Route::get('/trash-category', [CategoryPostController::class, 'showTrashCategory'])->name('show.trash.category');
 
+//Blog post Route
 Route::resource('/post', BlogPostController::class);
 Route::get('/allpost', [BlogPostController::class, 'showAllPost'])->name('show.all.post');
 Route::get('/blogpost-status-update/{id}', [BlogPostController::class, 'blogpostStatus'])->name('blogpost.status.update');
 Route::get('/blogpost-trash-update/{id}', [BlogPostController::class, 'blogpostTrash'])->name('blogpost.trash');
 Route::get('/trash-blogpost', [BlogPostController::class, 'showTrashbBogpost'])->name('show.trash.blogpost');
-
 
 });
 
@@ -176,3 +178,12 @@ Route::post('/user-login', [FrontendController::class, 'userlogin'])->name('user
 Route::get('/result', [FrontendController::class, 'resultsearchpage'])->name('result.search.form');
 Route::get('/search-result', [FrontendController::class, 'resultsearch'])->name('result.search');
 Route::get('/', [FrontendController::class, 'homepage'])->name('home.page');
+
+//notice route
+Route::get('/notice-board', [Notice::class, 'allnotice'])->name('all.notice');
+Route::get('/single-blog-post{id}', [BlogPostController::class, 'singleBlogPost'])->name('single.blog.post');
+Route::get('/single-notice{id}', [Notice::class, 'singleNotice'])->name('single.notice');
+Route::get('/about-us', [AboutUsController::class, 'aboutUs'])->name('single.about');
+Route::get('/history', [AboutUsController::class, 'history'])->name('single.history');
+Route::get('/mission-and-vision', [AboutUsController::class, 'missionAndVision'])->name('mission.page');
+Route::get('/news-and-event', [AboutUsController::class, 'newsAndEvent'])->name('news.event.page');

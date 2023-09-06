@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Admin;
 use App\Models\Apply;
+use App\Models\Blogpost;
 use App\Models\Notice;
 use App\Models\Slider;
 use App\Models\Testimonial;
@@ -75,6 +76,8 @@ class FrontendController extends Controller
         $teacher = Admin::Where('status', true) ->where('trash', false)->latest() -> limit(4) -> get();
         $notice = Notice::with('userdata')->Where('status', true) ->where('trash', false)->latest() -> limit(3) -> get();
         $testimonial = Testimonial::Where('status', true) ->where('trash', false)->latest() -> get();
+        $blogpost_latest = Blogpost::Where('status', true) ->where('trash', false)->latest() -> limit(1)-> get();
+        $blogpost = Blogpost::Where('status', true) ->where('trash', false)->latest() -> limit(3)-> get();
         return view('frontend.layouts.pages.homepage',[
            'sliders'            =>  $sliders,
            'about'              =>  $about,
@@ -82,6 +85,8 @@ class FrontendController extends Controller
            'apply'              =>  $apply,
            'teacher'            =>  $teacher,
            'testimonial'        =>  $testimonial,
+           'blogpost_latest'    =>  $blogpost_latest,
+           'blogpost'           =>  $blogpost,
         ]);
     }
 }

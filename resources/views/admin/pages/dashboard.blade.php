@@ -78,7 +78,7 @@
                     </div>
                     <div class="dash-widget-info">
                         
-                        <h6 class="text-muted">Appointment</h6>
+                        <h6 class="text-muted">Cost</h6>
                         <div class="progress progress-sm">
                             <div class="progress-bar bg-danger w-50"></div>
                         </div>

@@ -47,7 +47,13 @@
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="frontend/pages/css/responsive.css">
 
-    
+   		<!-- Data Table -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   
   
 </head>
@@ -138,10 +144,33 @@
     
     <!--====== Main js ======-->
     <script src="frontend/pages/js/main.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     
     <!--====== Map js ======-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3Ip9iVC0nIxC6V14CKLQ1HZNF_65qEQ"></script>
     <script src="frontend/pages/js/map-script.js"></script>
+    
+		<!-- Custom JS -->
+		<script  src="{{asset('admin/assets/js/script.js')}}"></script>
+
+		<!---Sweet Alert-->
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="{{ asset('js/app.js') }}"></script>
+		<script src="sweetalert2.all.min.js"></script>
+
+		<link rel="stylesheet" href="sweetalert2.min.css">
+
+	 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+		{{-- CK Editor --}}
+		<script src="https://cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.js"></script>
+
+	 <!-- Custom JS -->
+	 <script  src="{{asset('custom/admin.js')}}"></script>
+
+	 	
 
 </body>
 

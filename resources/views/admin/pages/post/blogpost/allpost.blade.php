@@ -10,7 +10,7 @@
                     <div class=" d-flex justify-content-end">
                         <a href="{{route('post.index')}}" class="btn btn-sm btn-success">Add Post <i class="fa fa-plus"></i></a>
                         &nbsp;
-                        <a href="#" class="btn btn-sm btn-danger">Trash Slider <i class="fa fa-arrow-right"></i></a>
+                        <a href="{{route('show.trash.blogpost')}}" class="btn btn-sm btn-danger">Trash Post <i class="fa fa-arrow-right"></i></a>
                     </div> 
                     
                 </div>
@@ -53,7 +53,7 @@
 
                                         <td>
                                             {{-- <a class="btn btn-sm btn-info" href="#"><i class="fa fa-eye"></i></a> --}}
-                                            <a class="btn btn-sm btn-warning" href="{{route('blogpost.edit', $item -> id)}}"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-sm btn-warning" href="{{route('post.edit', $item -> id)}}"><i class="fa fa-edit"></i></a>
                                             {{-- Trash --}}
                                             
                                             

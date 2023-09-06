@@ -157,14 +157,14 @@
                         <li>
                             <div class="single-event">
                                 <span><i class="fa fa-calendar"></i> {{$item -> created_at -> format('d M Y') }}</span>
-                                <a href="events-single.html"><h4> {{$item -> title}}</h4></a>
+                                <a href="{{route('single.notice', $item -> id)}}"><h4> {{$item -> title}}</h4></a>
                                 <span><i class="fa fa-user"></i> Posted by: {{$item -> userdata -> name}}</span>
                             </div>
                         </li>
                             
                         @endforeach
                     </ul> 
-                    <a href="#" class="mt-20"><i class="fa fa-arrow-right"></i> More Notice </a>
+                    <a href="{{route('all.notice')}}" class="mt-20"><i class="fa fa-arrow-right"></i> More Notice </a>
                 </div> <!-- about event -->
             </div>
         </div> <!-- row -->
@@ -271,7 +271,7 @@
                     <div class="testimonial-cont">
                         <p>{!! $item -> desc !!}</p>
                         <h6>{{$item -> name}}</h6>
-                        <span>{{$item ->designation}}</span>
+                        <span>{{$item -> designation}}</span>
                     </div>
                 </div> <!-- single testimonial -->
             </div>
@@ -296,80 +296,50 @@
             </div>
         </div> <!-- row -->
         <div class="row">
+            @foreach ($blogpost_latest as $item)
             <div class="col-lg-6">
                 <div class="single-news mt-30">
                     <div class="news-thum pb-25">
-                        <img src="frontend/pages/images/news/n-1.jpg" alt="News">
+                        <img src="{{url('storage/featured/' . $item -> featured)}}" style="width: 80%" alt="News">
                     </div>
                     <div class="news-cont">
                         <ul>
-                            <li><a href="#"><i class="fa fa-calendar"></i>2 December 2018 </a></li>
-                            <li><a href="#"> <span>By</span> Adam linn</a></li>
+                            <li><a href="#"><i class="fa fa-calendar"></i>{{$item -> created_at -> format('d M Y') }} </a></li>
+                            <li><a href="#"> <span>By</span> {{$item -> author -> name}}</a></li>
                         </ul>
-                        <a href="blog-single.html"><h3>Tips to grade high cgpa in university life</h3></a>
-                        <p>Lorem ipsum gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons equat ipsutis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt .</p>
+                        <a href="{{route('single.blog.post', $item -> id)}}"><h3>{{$item -> title}}</h3></a>
+                        <p>{!! substr($item -> content,0,200) !!} ...</p>
                     </div>
                 </div> <!-- single news -->
             </div>
+                
+            @endforeach
+
+            
             <div class="col-lg-6">
+                @foreach ($blogpost as $item)
                 <div class="single-news news-list">
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="news-thum mt-30">
-                                <img src="frontend/pages/images/news/ns-1.jpg" alt="News">
+                                <img src="{{url('storage/featured/' . $item -> featured)}}" alt="News">
                             </div>
                         </div>
                         <div class="col-sm-8">
                             <div class="news-cont mt-30">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-calendar"></i>2 December 2018 </a></li>
-                                    <li><a href="#"> <span>By</span> Adam linn</a></li>
+                                    <li><a href="#"><i class="fa fa-calendar"></i>{{$item -> created_at -> format('d M Y') }} </a></li>
+                                    <li><a href="#"> <span>By</span> {{$item -> author -> name}}</a></li>
                                 </ul>
-                                <a href="blog-single.html"><h3>Intellectual communication</h3></a>
-                                <p>Gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons  vel.</p>
+                                <a href="{{route('single.blog.post', $item -> id)}}"><h3>{{$item -> title}}</h3></a>
+                                <p>{!! substr($item -> content,0,100) !!} ...</p>
                             </div>
                         </div>
                     </div> <!-- row -->
                 </div> <!-- single news -->
-                <div class="single-news news-list">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="news-thum mt-30">
-                                <img src="frontend/pages/images/news/ns-2.jpg" alt="News">
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="news-cont mt-30">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-calendar"></i>2 December 2018 </a></li>
-                                    <li><a href="#"> <span>By</span> Adam linn</a></li>
-                                </ul>
-                                <a href="blog-single.html"><h3>Study makes you perfect</h3></a>
-                                <p>Gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons  vel.</p>
-                            </div>
-                        </div>
-                    </div> <!-- row -->
-                </div> <!-- single news -->
-                <div class="single-news news-list">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="news-thum mt-30">
-                                <img src="frontend/pages/images/news/ns-3.jpg" alt="News">
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="news-cont mt-30">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-calendar"></i>2 December 2018 </a></li>
-                                    <li><a href="#"> <span>By</span> Adam Linn</a></li>
-                                </ul>
-                                <a href="blog-single.html"><h3>Technology eduction is now....</h3></a>
-                                <p>Gravida nibh vel velit auctor aliquetn sollicitudirem quibibendum auci elit cons  vel.</p>
-                            </div>
-                        </div>
-                    </div> <!-- row -->
-                </div> <!-- single news -->
+                @endforeach
             </div>
+
         </div> <!-- row -->
     </div> <!-- container -->
 </section>

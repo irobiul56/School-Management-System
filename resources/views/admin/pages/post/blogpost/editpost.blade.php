@@ -10,16 +10,17 @@
             </div>
             <div class="card-body">
              @include('validate')
-                <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('post.update', $blogpost_data -> id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label><h4>Title</h4></label>
-                        <input name="title" type="text" value="{{old('title')}}" class="form-control">
+                        <input name="title" type="text" value="{{$blogpost_data -> title}}" class="form-control">
                     </div>
 
                     <div class="form-group">
                       <label><h4>Description</h4></label>
-                      <textarea id="posteditor2" name="content" type="text" value="{{old('content')}}" class="form-control"></textarea>
+                      <textarea id="posteditor2" name="content" type="text" value="{{$blogpost_data -> content}}" class="form-control">{{$blogpost_data -> content}}</textarea>
                     </div>
 
 
@@ -38,21 +39,23 @@
                     <div class="card-body">
                     
                             <div class="form-group">
-
+                            <label>photo</label>
                             <br>
-                            <img style="width: 100%;" id="slider-photo-preview" src="" alt="">
+                            <br>
+                            <img style="width: 100%;" id="slider-photo-preview" src="{{url('storage/featured/' . $blogpost_data -> featured)}}" alt="">
                             <br>
                             <br>
                             <input style="display: none;" name="photo" type="file" class="form-control" id="slider-photo">
                             <label for="slider-photo">
-                            <img style="width: 100px; cursor: pointer;" src="https://icon-library.com/images/album-icon/album-icon-3.jpg" alt="">
+                             <img style="width: 100px; cursor: pointer;" src="https://icon-library.com/images/album-icon/album-icon-3.jpg" alt="">
                             </label>
-                            </div>
+                          </div>
+
                             <div class="form-group">
                                 <label><h4>Select Category</h4></label>
                     
                                 <ul style="list-style:none; padding: 0px">
-                                    @forelse ($category as $cat)
+                                    @forelse ($blogpost_data -> category as $cat)
                                     <li>
                                         <label><input name="cat[]" value="{{$cat -> id}}" type="checkbox">{{$cat -> name}}</label>
                                     </li>
@@ -64,12 +67,11 @@
                                     
                                 </ul>
                             </div>
-        
                             <br>
                             <div class="form-group">
                                 <label>Select Tag</label>
                                 <select class="form-control blog-tag-2" name="tag[]" id="" multiple>
-                                    @foreach ($tag as $tags)
+                                    @foreach ($blogpost_data -> tag as $tags)
                                     <option value="{{$tags -> id}}">{{$tags -> name}}</option>  
                                     @endforeach
                                 </select>

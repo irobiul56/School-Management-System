@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 use App\Models\Notice as ModelsNotice;
 
 class Notice extends Controller
@@ -22,6 +23,23 @@ class Notice extends Controller
             'form_type'         => 'create'
         ]);
     }
+
+    public function singleNotice($id) {
+        $singleNotice = ModelsNotice::findOrfail($id);
+        $notice = ModelsNotice::latest() -> where('trash', false) -> limit(5) ->get();
+        return view('admin.pages.hompage.notice.singlenotice', [
+            'singleNotice'              => $singleNotice,
+            'notice'                    => $notice,
+        ]);
+    }
+
+    public function allnotice(){
+        $notice = ModelsNotice::latest() -> where('trash', false) ->get();
+        return view('admin.pages.hompage.notice.allnotice', [
+            'notice'             => $notice,
+        ]);
+    }
+
     public function showTrashNotice()
     {
         $notice_data = ModelsNotice::latest() -> where('trash', true) -> get();
@@ -53,6 +71,8 @@ class Notice extends Controller
         'title'  => 'required',
         'desc'  => 'required'
        ]);
+
+    
        $user = Auth::guard('admin') -> user() -> id;
        ModelsNotice::create([
         'title'     => $request -> title,

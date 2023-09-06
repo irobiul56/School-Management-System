@@ -96,13 +96,13 @@
                                     <a class="active" href="{{route('home.page')}}">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#">About Us</a>
+                                    <a href="{{route('single.about')}}">About Us</a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">At A Glance</a></li>
-                                        <li><a href="#">History</a></li>
-                                        <li><a href="#">Mission & Vision</a></li>
-                                        <li><a href="#">Achievement</a></li>
-                                        <li><a href="#">News & Event</a></li>
+                                        <li><a href="{{route('single.about')}}">At A Glance</a></li>
+                                        <li><a href="{{route('single.history')}}">History</a></li>
+                                        <li><a href="{{route('mission.page')}}">Mission & Vision</a></li>
+                                        <li><a href="{{route('mission.page')}}">Achievement</a></li>
+                                        <li><a href="{{route('news.event.page')}}">News & Event</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
