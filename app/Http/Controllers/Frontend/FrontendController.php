@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\Examtype;
-use App\Models\Studentyear;
-use App\Models\Studentclass;
-use Illuminate\Http\Request;
-use App\Models\finalstudentsmarks;
-use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Admin;
 use App\Models\Apply;
-use App\Models\Blogpost;
 use App\Models\Notice;
 use App\Models\Slider;
+use App\Models\Subject;
+use App\Models\Blogpost;
+use App\Models\Examtype;
+use App\Models\Studentyear;
 use App\Models\Testimonial;
+use App\Models\Studentclass;
+use Illuminate\Http\Request;
+use App\Models\Assignsubject;
+use App\Models\GoverningBody;
+use App\Models\finalstudentsmarks;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
@@ -89,4 +92,30 @@ class FrontendController extends Controller
            'blogpost'           =>  $blogpost,
         ]);
     }
+
+    public function teacherStaff(){
+        $teacher = Admin::Where('status', true) ->where('trash', false)->latest() -> get();
+        return view('frontend.administration.teacher',[
+            'teacher'            =>  $teacher,
+        ]);
+    }
+
+    public function governingBodyStaff(){
+        $teacher = GoverningBody::Where('status', true) ->where('trash', false)->latest() -> get();
+        return view('frontend.administration.governingbody',[
+            'teacher'            =>  $teacher,
+        ]);
+    }
+
+
+    public function bookList() {
+        $class = Studentclass::latest() -> where('status', true) -> get();
+        $subject = Subject::latest() -> where('status', true) -> get();
+        return view('frontend.academic.booklist', [
+            'class'         => $class,
+            'subject'       => $subject,
+            'form_type'     => 'create',
+        ]);
+    }
+
 }

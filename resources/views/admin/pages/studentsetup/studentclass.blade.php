@@ -6,8 +6,8 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h4 class="card-title">All Class </h4> 
-                    <a href="#" class="btn btn-sm btn-danger">Trash Testimonial <i class="fa fa-arrow-right"></i></a>
+                    <h4 class="card-title"> Class </h4> 
+                    <a href="#" class="btn btn-sm btn-danger">Trash Class<i class="fa fa-arrow-right"></i></a>
                 </div>
                 @include('validate-main')
                 <div class="card-body">
@@ -17,6 +17,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Class</th>
+                                    <th>Subject</th>
                                     <th>Created At</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -28,6 +29,19 @@
                                     <tr>
                                         <td>{{$loop -> index + 1}}</td>
                                         <td>{{$item -> name}}</td>
+                                        
+                                        <td>
+                                            <ul style="list-style: none; padding:0px;">
+                                                @forelse (json_decode($item -> subject_id) as $subject)
+                                                    <li><i class="fa fa-angle-right"></i> &scnap;{{ $subject }} </li>
+                                                @empty
+                                                    <li> No Record Found</li>
+                                                @endforelse
+                                                
+                                            </ul>
+                                        
+                                        </td>
+
                                         <td>{{$item -> created_at -> DiffForHumans()}}</td>
 
                                         <td>
@@ -75,9 +89,23 @@
                         <form action="{{route('student-class.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label>Tag Name</label>
+                                <label>Class</label>
                                 <input name="name" type="text" value="{{old('text')}}" class="form-control">
                             </div>
+
+                            <div class="form-group">
+                                <ul style="list-style:none; padding: 0px">
+                                     @forelse ($subject as $item)
+                                        <li>
+                                            <label><input name="subject[]" value="{{$item -> name}}" type="checkbox">{{$item -> name}}</label>
+                                        </li>
+                                     @empty
+                                        <li>
+                                            <label for="" class="text-cemter text-danger">No Record Found</label>
+                                        </li> 
+                                     @endforelse 
+                                </ul>
+                             </div>
 
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -87,38 +115,43 @@
                 </div>
             @endif
 
-            {{-- @if ($form_type == 'edit')
+            @if ($form_type == 'edit')
                 <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Add New Testimonial</h4>
+                    <div class="card-header d-flex justify-content-between">
+                        <h4 class="card-title">Edit Class</h4>
+                        <a class="btn-sm btn-info" href="{{route('student-class.index')}}">Back</a>
                     </div>
                     <div class="card-body">
-                     @include('validate')
-                        <form action="{{route('testimonials.update', $testimonial -> id)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('student-class.update', $edit -> id)}}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <label>Text</label>
-                                <input name="text" type="text" value="{{$testimonial -> text}}" class="form-control">
+                                @include('validate')
+                                <label>Name</label>
+                                <input name="name" type="text" value="{{$edit -> name}}" class="form-control">
                             </div>
-
                             <div class="form-group">
-                              <label>Client</label>
-                              <input name="client" type="text" value="{{$testimonial -> client}}" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Company</label>
-                                <input name="company" type="text" value="{{$testimonial -> company}}" class="form-control">
-                              </div>
-
+                                <ul style="list-style:none; padding: 0px">
+                                     @forelse (json_decode($subject) as $item)
+                                     <li>
+                                         <label><input @if (in_array($item -> name, json_decode($edit -> subject_id))) checked  @endif name="subject[]" value="{{$item -> name}}" type="checkbox">{{$item -> name}}</label>
+                                     </li>
+                                     @empty
+                                     <li>
+                                         <label for="" class="text-cemter text-danger">No Record Found</label>
+                                     </li> 
+                                     @endforelse
+                                     
+                                </ul>
+                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </form>
                     </div>
                 </div>
-            @endif --}}
+            @endif
+
         </div>
     </div>
     

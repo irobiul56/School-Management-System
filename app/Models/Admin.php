@@ -21,4 +21,9 @@ class Admin extends User
     {
         return $this->BelongsTo(designation::class, 'designation_id', 'id');
     }
+
+    public function governingbody()
+    {
+        return $this->BelongsTo(GoverningBody::class, 'admin_id', 'id');
+    }
 }

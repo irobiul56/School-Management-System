@@ -2,8 +2,8 @@
 @section('main-section')
 
  <!--====== SLIDER PART START ======-->
- @foreach ($sliders as $item)
  <section id="slider-part" class="slider-active ">
+     @foreach ($sliders as $item)
     <div class="single-slider bg_cover pt-150" style="background-image: url({{url('storage/sliders/' . $item -> photo)}})" data-overlay="4">
         <div class="container">
             <div class="row">
@@ -53,9 +53,9 @@
                 </div>
             </div> <!-- row -->
         </div> <!-- container -->
-    </div> <!-- single slider --> --}}
+    </div> <!-- single slider -->  --}}
+    @endforeach 
 </section>
-@endforeach 
 <!--====== SLIDER PART ENDS ======-->
 
 <!--====== CATEGORY PART START ======-->
@@ -315,7 +315,6 @@
                 
             @endforeach
 
-            
             <div class="col-lg-6">
                 @foreach ($blogpost as $item)
                 <div class="single-news news-list">

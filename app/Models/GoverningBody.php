@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subject extends Model
+class GoverningBody extends Model
 {
     use HasFactory;
-    
+
     protected $guarded = [];
 
-    public function classes()
+    public function user()
     {
-        return $this->hasMany(Student_Class::class);
+        return $this->BelongsTo(Admin::class, 'admin_id', 'id');
     }
 }

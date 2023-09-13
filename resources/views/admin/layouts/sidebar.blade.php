@@ -33,17 +33,15 @@
                 <li class="submenu">
                     <a href="#"><i class="fe fe-document"></i> <span> Administration </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li><a href="#">Governing Body</a></li>
-                        <li><a href="#">Chairman Message</a></li>
-                        <li><a href="#">Teacher Staff</a></li>
-                        <li><a href="#">Staff Information</a></li>
+                        <li><a href="{{route('governing-body.index')}}">Governing Body</a></li>
+                        <li><a href="{{route('chairman-message.index')}}">Chairman Message</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="fe fe-document"></i> <span> Academic </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="#">Academic Calendar</a></li>
-                        <li><a href="#">Class Routine</a></li>
+                        <li><a href="{{route('class-routine.index')}}">Class Routine</a></li>
                         <li><a href="#">Syllabus</a></li>
                         <li><a href="#">Book List</a></li>
                         <li><a href="#">Exam Result</a></li>

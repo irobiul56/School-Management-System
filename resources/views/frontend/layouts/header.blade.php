@@ -6,7 +6,8 @@
                     <div class="header-contact">
                         <ul>
                             <li><i class="fa fa-envelope"></i><a href="#">arifinstitute5@gmail.com</a></li>
-                            <li><i class="fa fa-phone"></i><span>+8801309138855</span></li>
+                            <li><i class="fa fa-phone"></i><span><a href="tel:01309138855">Call +8801309138855</a></span></li>
+                            
                         </ul>
                     </div> <!-- header contact -->
                 </div>
@@ -66,7 +67,7 @@
                           <div class="col-lg-2 col-md-2 col-sm-12">
                                <div class="button float-left">
                                    <ul class="caption fade-caption" style="margin:0">
-                                        <li><i class="fa fa-external-link-square" aria-hidden="true" style="color:#062216"></i>  <a href="#"> আদেশ/ নোটিশ</a></li>
+                                        <li><i class="fa fa-external-link-square" aria-hidden="true" style="color:#062216"></i>  <a href="{{route('all.notice')}}"> আদেশ/ নোটিশ</a></li>
                                         <li><i class="fa fa-external-link-square" aria-hidden="true" style="color:#062216"></i> <a href="#"> কার্যক্রম</a></li>
                                         <li> <i class="fa fa-external-link-square" aria-hidden="true" style="color:#062216"></i> <a href="#">ছবি গ্যালারি</a></li>
                                         <li><i class="fa fa-external-link-square" aria-hidden="true" style="color:#062216"></i> <a href="#" title="ভিডিও" data-ytdl-video-id="_j5Q6HIIwlA">ভিডিও</a><span title="Download using YouTube Downloader by Addoncrop" class="ytdl-handle-btn"></span></li>
@@ -101,16 +102,16 @@
                                         <li><a href="{{route('single.about')}}">At A Glance</a></li>
                                         <li><a href="{{route('single.history')}}">History</a></li>
                                         <li><a href="{{route('mission.page')}}">Mission & Vision</a></li>
-                                        <li><a href="{{route('mission.page')}}">Achievement</a></li>
+                                        <li><a href="{{route('achievement.page')}}">Achievement</a></li>
                                         <li><a href="{{route('news.event.page')}}">News & Event</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
                                     <a href="courses.html">ADMINISTRATION</a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">Governing Body</a></li>
-                                        <li><a href="#">Chairman Message</a></li>
-                                        <li><a href="#">Teacher Staff</a></li>
+                                        <li><a href="{{route('govrning.body.staff')}}">Governing Body</a></li>
+                                        <li><a href="{{route('chairman.messages-show')}}">Chairman Message</a></li>
+                                        <li><a href="{{route('teacher.staff')}}">Teacher Staff</a></li>
                                         <li><a href="#">Staff Information</a></li>
                                         
                                     </ul>
@@ -121,8 +122,8 @@
                                         <li><a href="#">Academic Calendar</a></li>
                                         <li><a href="#">Class Routine</a></li>
                                         <li><a href="#">Syllabus</a></li>
-                                        <li><a href="#">Book List</a></li>
-                                        <li><a href="#">Public Exam Result</a></li>
+                                        <li><a href="{{route('show.book.list')}}">Book List</a></li>
+                                        <li><a href="{{route('result.search.form')}}"> Exam Result</a></li>
                                         <li><a href="#">Academic Rules</a></li>
                                     </ul>
                                 </li>

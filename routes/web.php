@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\ApplyController;
 use App\Http\Controllers\Admin\AssignSubjectController;
 use App\Http\Controllers\Admin\BlogPostController;
 use App\Http\Controllers\Admin\CategoryPostController;
+use App\Http\Controllers\Admin\ChairmanMessage;
+use App\Http\Controllers\Admin\ClassRoutineController;
 use App\Http\Controllers\Admin\ClasswiseResultsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DefaultController;
@@ -16,6 +18,7 @@ use App\Http\Controllers\Admin\Employee;
 use App\Http\Controllers\Admin\ExamTypeController;
 use App\Http\Controllers\Admin\FinalExamResult;
 use App\Http\Controllers\Admin\FinalExamResultController;
+use App\Http\Controllers\Admin\governingBody;
 use App\Http\Controllers\Admin\GradepointController;
 use App\Http\Controllers\Admin\MarksController;
 use App\Http\Controllers\Admin\MonthlyExamController;
@@ -36,6 +39,7 @@ use App\Http\Controllers\Admin\TutorialExamController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\SliderController;
 use App\Models\Apply;
+use App\Models\ClassRoutineModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -170,7 +174,24 @@ Route::get('/blogpost-status-update/{id}', [BlogPostController::class, 'blogpost
 Route::get('/blogpost-trash-update/{id}', [BlogPostController::class, 'blogpostTrash'])->name('blogpost.trash');
 Route::get('/trash-blogpost', [BlogPostController::class, 'showTrashbBogpost'])->name('show.trash.blogpost');
 
+//Administration route
+
+//governing body
+Route::resource('/governing-body', governingBody::class);
+Route::get('/governing-status-update/{id}', [governingBody::class, 'governingStatus'])->name('governing.status.update');
+
+//Chairman Message
+Route::resource('/chairman-message', ChairmanMessage::class);
+Route::get('/chairman-message-status-update/{id}', [ChairmanMessage::class, 'chairmanStatus'])->name('chairman.status.update');
+Route::get('/chairman-message-trash-update/{id}', [ChairmanMessage::class, 'chairmanTrash'])->name('chairman.trash');
+
+//Class Routine
+Route::resource('/class-routine', ClassRoutineController::class);
+Route::get('/create-routine', [ClassRoutineController::class, 'createRoutine'])->name('show.all.routine');
+
+
 });
+
 
 Route::get('/login', [FrontendController::class, 'showloginform'])->name('show.login.form');
 Route::post('/user-login', [FrontendController::class, 'userlogin'])->name('user.login');
@@ -187,3 +208,23 @@ Route::get('/about-us', [AboutUsController::class, 'aboutUs'])->name('single.abo
 Route::get('/history', [AboutUsController::class, 'history'])->name('single.history');
 Route::get('/mission-and-vision', [AboutUsController::class, 'missionAndVision'])->name('mission.page');
 Route::get('/news-and-event', [AboutUsController::class, 'newsAndEvent'])->name('news.event.page');
+Route::get('/achievement', [AboutUsController::class, 'newsAndEvent'])->name('achievement.page');
+Route::get('/teacher-staff', [FrontendController::class, 'teacherStaff'])->name('teacher.staff');
+Route::get('/governing-staff', [FrontendController::class, 'governingBodyStaff'])->name('govrning.body.staff');
+Route::get('/chairman-messages', [ChairmanMessage::class, 'chairmanmessages'])->name('chairman.messages-show');
+Route::get('/book-list', [FrontendController::class, 'bookList'])->name('show.book.list');
+
+
+
+
+
+
+
+
+
+//Not Found Router
+Route::get('/{pathMatch}', function () {
+    return view('frontend.layouts.notfound');
+}) -> where('pathMatch', ".*");
+
+

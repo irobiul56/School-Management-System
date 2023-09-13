@@ -4,15 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Education Board Bangladesh</title>
 	<link rel="stylesheet" href="{{asset('frontend/assets/css/syle.css')}}">
-
-	<link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/assets/images/logo.png')}}">
-
-	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-	<title>Doccure - Dashboard</title>
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="{{asset('admin/assets/img/logo.png')}}" type="image/png">
 	
-	<!-- Favicon -->
-	<link rel="shortcut icon" type="image/x-icon" href="{{asset('admin/assets/img/favicon.png')}}">
 	
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="{{asset('admin/assets/css/bootstrap.min.css')}}">

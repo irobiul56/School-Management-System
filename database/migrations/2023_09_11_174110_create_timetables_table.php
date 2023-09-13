@@ -13,15 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('studentclasses', function (Blueprint $table) {
+        Schema::create('timetables', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('subject_id');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->bigInteger('class_id');
+            $table->bigInteger('day_id');
             $table->boolean('status') -> default(true);
             $table->boolean('trash') -> default(false);
             $table->timestamps();
         });
-
     }
 
     /**
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('studentclasses');
+        Schema::dropIfExists('timetables');
     }
 };

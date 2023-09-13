@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subject extends Model
+class Timetable extends Model
 {
     use HasFactory;
-    
+
     protected $guarded = [];
 
-    public function classes()
+    public function Classes()
     {
-        return $this->hasMany(Student_Class::class);
+        return $this->belongsTo(Student_Class::class);
     }
 }

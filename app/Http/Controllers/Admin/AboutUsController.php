@@ -48,9 +48,20 @@ class AboutUsController extends Controller
 
     public function newsAndEvent()
     {
-        $category = Categorypost::with('blogpost')->latest() -> where('id', 7) -> where('trash', false) ->get();
+        $category = Categorypost::with('blogpost')->latest() -> where('id', 8) -> where('trash', false) ->get();
         $blogpost_data = Blogpost::latest() -> where('trash', false) -> limit(3) -> get();
         return view('frontend.layouts.pages.newsandevent', [
+            'category'             => $category,
+            'blogpost_data'        => $blogpost_data,
+
+        ]);
+    }
+
+    public function achievement()
+    {
+        $category = Categorypost::with('blogpost')->latest() -> where('id', 7) -> where('trash', false) ->get();
+        $blogpost_data = Blogpost::latest() -> where('trash', false) -> limit(3) -> get();
+        return view('frontend.layouts.pages.achievement', [
             'category'             => $category,
             'blogpost_data'        => $blogpost_data,
 
